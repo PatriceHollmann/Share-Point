@@ -78,7 +78,7 @@ namespace SharePointTaskApplication.Controllers
         {
             //if (ModelState.IsValid)
             //{
-                var passwordHash = person.Password.GetHashCode();
+                var passwordHash = person.Password/*.GetHashCode()*/;
                 UserData user = null;
                 using (UserContext userDb = new UserContext())
                 {
@@ -113,7 +113,7 @@ namespace SharePointTaskApplication.Controllers
         {
             //if (ModelState.IsValid)
             //{
-                var passwordHash = person.Password.GetHashCode();
+                var passwordHash = person.Password/*.GetHashCode()*/;
                 UserData user = null;
                 using (UserContext userDb = new UserContext())
                 {
@@ -228,7 +228,7 @@ namespace SharePointTaskApplication.Controllers
                 {
                     using (UserContext userDb = new UserContext())
                     {
-                        userDb.Users.Add(new UserData { Email = person.Email, RoleId = 2 });
+                        userDb.Users.Add(new UserData { Email = person.Email, RoleId = 2});
                         userDb.SaveChanges();
                         user = userDb.Users.Where(x => x.Email == person.Email).FirstOrDefault();
                     }

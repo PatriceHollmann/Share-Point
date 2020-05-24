@@ -23,7 +23,7 @@ namespace SharePointTaskApplication
             context.Roles.Add(new Role { Id = 1, Name = "Admin" });
             context.Roles.Add(new Role { Id = 2, Name = "User" });
 
-            context.Users.Add(new UserData { Id = 1, RoleId = 1, Email = "somemail@mail.ru", PasswordHash = password.GetHashCode() });
+            context.Users.Add(new UserData { Id = 1, RoleId = 1, Email = "somemail@mail.ru", PasswordHash = password/*.GetHashCode()*/ });
             base.Seed(context);
         }
     }
