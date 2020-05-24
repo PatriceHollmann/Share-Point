@@ -1,0 +1,117 @@
+﻿@model List<SharePointTaskApplication.PersonData>
+
+@{
+    ViewBag.Title = "AdminPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Зарегистрированные пользователи</h2>
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(modelItem => modelItem.FirstOrDefault().Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(modelItem => modelItem.FirstOrDefault().Surname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().MiddleName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().DateOfBirth)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().Sex)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().Employer)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().Position)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().Country)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().City)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().Approval)
+                </th>
+            </tr>
+
+            @foreach (SharePointTaskApplication.PersonData item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Surname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MiddleName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfBirth)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sex)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Employer)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Position)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Country)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.City)
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Approval)
+                        </td>*@
+                    <td>
+                        <div class="col-md-10">
+                            @Html.RadioButtonFor(modelItem => item.Approval, true) Пригласить
+                        </div>
+                        <div class="col-md-10">
+                            @Html.RadioButtonFor(modelItem => item.Approval, false) Отклонить
+                        </div>
+                    </td>
+                </tr>
+
+                @*@Html.ActionLink("Сохранить", "Edit", new { id = item.Id })*@
+                @*@Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+            }
+
+        </table>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Сохранить изменения" class="btn btn-default" />
+            </div>
+        </div>
+        </div>
+}
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
